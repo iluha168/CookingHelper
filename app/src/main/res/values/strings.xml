@@ -1,0 +1,22 @@
+<resources>
+    <string name="app_name">Cooking Helper</string>
+    <string name="to_screen_weight">ΣWeight</string>
+    <string name="id">#%1$d</string>
+    <string name="info">Information</string>
+    <string name="weighted_item">Cookie</string>
+    <string name="weighted_item_weight">Weight: %1$f</string>
+    <string name="new_measurement_add">Please add a cookie</string>
+    <string name="new_measurement_place">Place the cookie to the place with a plus,\nthen click me.</string>
+    <string name="weighted_item_combination_dlg_title">Cookie Combinations</string>
+    <string name="target_weight">Target total weight:</string>
+    <string name="best_item_combo_stats">Best cookie combination so far results in a total weight of %1$f.\nThis is a %2$f (%3$f%%) deviation from target.</string>
+    <string name="target_weight_error">Allowed error:</string>
+    <string name="input_weight">Input weight</string>
+    <string name="best_item_combo_remove">I have packed the green cookies</string>
+    <string name="dlg_confirm_title">Confirmation</string>
+    <string name="dlg_confirm_body">Are you really sure?</string>
+    <string name="dlg_confirm_yes">Yes</string>
+    <string name="dlg_confirm_no">No</string>
+    <string name="delete">Delete</string>
+    <string name="update_button">Check for updates</string>
+</resources>

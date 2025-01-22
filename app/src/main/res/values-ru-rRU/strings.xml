@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Помошник по готовке</string>
+    <string name="to_screen_weight">ΣВес</string>
+    <string name="id">№%1$d</string>
+    <string name="info">Информация</string>
+    <string name="weighted_item">Печенька</string>
+    <string name="weighted_item_weight">Вес: %1$f</string>
+    <string name="new_measurement_add">Добавьте печеньку</string>
+    <string name="new_measurement_place">Положите печеньку на место с плюсом,\nа затем нажмите меня.</string>
+    <string name="weighted_item_combination_dlg_title">Пачка печенек</string>
+    <string name="target_weight">Плановый общий вес:</string>
+    <string name="best_item_combo_stats">На данный момент, наилучшая комбинация печенек в сумме весит %1$f. Это отклонение на %2$f (%3$f%%) от плана.</string>
+    <string name="target_weight_error">Допустимая погрешность:</string>
+    <string name="input_weight">Введите вес</string>
+    <string name="best_item_combo_remove">Я упаковал зелёные печеньки</string>
+    <string name="dlg_confirm_title">Подтверждение</string>
+    <string name="dlg_confirm_body">Точно точно?</string>
+    <string name="dlg_confirm_yes">Да</string>
+    <string name="dlg_confirm_no">Нет</string>
+    <string name="delete">Удалить</string>
+    <string name="update_button">Проверить обновления</string>
+</resources>
