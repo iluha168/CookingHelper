@@ -1,6 +1,7 @@
 package com.iluha168.sigmaweight.ui.leaf
 
 import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.text.KeyboardActions
 import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.material3.Text
 import androidx.compose.material3.TextField
@@ -10,6 +11,7 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.text.input.ImeAction
 import androidx.compose.ui.text.input.KeyboardType
 
 @Composable
@@ -26,6 +28,12 @@ fun DoubleInput(
 
     val double = input.toDoubleOrNull()
     val pass = double != null && additionalCheck(double)
+    val tryOnSubmit = {
+        if(pass) {
+            onSubmit(double!!)
+            input = ""
+        }
+    }
 
     TextField(
         label = { Text(label) },
@@ -33,16 +41,21 @@ fun DoubleInput(
         enabled = enabled,
         maxLines = 2,
         minLines = 1,
-        keyboardOptions = KeyboardOptions.Default.copy(keyboardType = KeyboardType.Number),
+        keyboardOptions = KeyboardOptions.Default.copy(
+            keyboardType = KeyboardType.Number,
+            showKeyboardOnFocus = true,
+            imeAction = ImeAction.Done,
+            autoCorrectEnabled = false,
+        ),
+        keyboardActions = KeyboardActions(
+            onDone = { tryOnSubmit() }
+        ),
         modifier = Modifier.fillMaxWidth(),
 
         isError = !pass,
         onValueChange = {
             input = it.trim()
-            if("\n" in it && pass) {
-                onSubmit(double!!)
-                input = ""
-            }
+            if("\n" in it) tryOnSubmit()
         },
         placeholder = { Text("49.7") }
     )
