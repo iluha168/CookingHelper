@@ -1,6 +1,9 @@
 package com.iluha168.sigmaweight.ui.leaf
 
+import androidx.compose.foundation.background
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
@@ -9,7 +12,6 @@ import androidx.compose.material.icons.filled.Delete
 import androidx.compose.material3.Button
 import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
-import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
@@ -29,7 +31,8 @@ data class WeightedItemData (
 @Composable
 fun WeightedItem(
     modifier: Modifier = Modifier,
-    data: Pair<Int, WeightedItemData>? = null,
+    id: Int,
+    data: WeightedItemData? = null,
     shouldBlink: Boolean,
     onDeleteRequest: (key: Int) -> Unit,
     color: Color,
@@ -37,14 +40,14 @@ fun WeightedItem(
 ) {
     val dlgInfo = rememberDialogOpener(R.string.info) { close ->
         if(data == null) return@rememberDialogOpener
-        Text(stringResource(R.string.weighted_item)+" "+stringResource(R.string.id, data.first))
-        Text(stringResource(R.string.weighted_item_weight, data.second.weight), fontSize = 20.sp)
+        Text(stringResource(R.string.weighted_item)+" "+stringResource(R.string.id, id))
+        Text(stringResource(R.string.weighted_item_weight, data.weight), fontSize = 20.sp)
         Column(
             modifier = Modifier.fillMaxWidth(),
             horizontalAlignment = Alignment.CenterHorizontally
         ) {
-            Button(onClick = rememberConfirmationDialog {
-                onDeleteRequest(data.first)
+            Button(onClick = {
+                onDeleteRequest(id)
                 close()
             }) {
                 Icon(Icons.Default.Delete, stringResource(R.string.delete), tint = MaterialTheme.colorScheme.onError)
@@ -58,22 +61,32 @@ fun WeightedItem(
         verticalArrangement = Arrangement.Center,
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
-        Surface (
-            modifier = modifier.fillMaxSize(),
-            onClick = if(data == null) {->} else dlgInfo,
-            color = color
+        Box (modifier
+            .clickable(
+                enabled = data != null,
+                onClick = { dlgInfo() }
+            )
+            .background(color)
+            .fillMaxSize()
         ) {
-            if(data != null)
+            Icon(
+                icon, stringResource(R.string.weighted_item),
+                modifier = Modifier.align(Alignment.Center)
+            )
+            if(data != null) {
                 Text(
-                    text = stringResource(R.string.id, data.first),
+                    text = stringResource(R.string.id, id),
                     fontSize = 8.sp,
                     maxLines = 1,
+                    modifier = Modifier.align(Alignment.TopStart)
                 )
-            Icon(
-                icon,
-                stringResource(R.string.weighted_item),
-                Modifier.fillMaxSize()
-            )
+                Text(
+                    text = data.weight.toInt().toString(),
+                    fontSize = 10.sp,
+                    maxLines = 1,
+                    modifier = Modifier.align(Alignment.BottomCenter)
+                )
+            }
         }
     }
 }

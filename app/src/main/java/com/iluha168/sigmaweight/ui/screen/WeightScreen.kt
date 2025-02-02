@@ -156,13 +156,15 @@ fun WeightScreen() {
                     verticalAlignment = Alignment.CenterVertically
                 ) {
                     for(x in 0..<GRID_SIZE) {
-                        val itemId = state.itemPlacements[x+y*GRID_SIZE]
+                        val placementId = x+y*GRID_SIZE
+                        val itemId = state.itemPlacements[placementId]
                         val item = state.items[itemId]
                         val isLastInsertedItem = state.isLastItem(itemId)
                         WeightedItem(
                             modifier = Modifier.weight(1f).fillMaxHeight().padding(1.dp),
                             onDeleteRequest = state::deleteItem,
-                            data = if(item == null) null else Pair(itemId, item),
+                            id = placementId+1,
+                            data = item,
                             shouldBlink = isLastInsertedItem,
                             color = when {
                                 itemId in bestItemComboIds -> if(isErrorInRange) Color.Green else MaterialTheme.colorScheme.surfaceVariant
