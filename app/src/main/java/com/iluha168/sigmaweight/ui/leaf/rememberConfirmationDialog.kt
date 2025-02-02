@@ -16,11 +16,10 @@ fun rememberConfirmationDialog(onConfirm: () -> Unit) =
     rememberDialogOpener(R.string.dlg_confirm_title) { close ->
         Text(stringResource(R.string.dlg_confirm_body))
         Row {
-            val actions = mutableListOf<Pair<() -> Unit, Int>>()
-            actions.add(Pair(onConfirm, R.string.dlg_confirm_yes))
-            val actionNo = Pair(close, R.string.dlg_confirm_no)
-            for(i in 1..2)
-                actions.add(actionNo)
+            val actions = mutableListOf(
+                Pair(onConfirm, R.string.dlg_confirm_yes),
+                Pair(close, R.string.dlg_confirm_no)
+            )
             actions.shuffle()
             for(( clicked, str ) in actions)
                 Button(

@@ -14,7 +14,7 @@
     <string name="input_weight">Input weight</string>
     <string name="best_item_combo_remove">I have packed the green cookies</string>
     <string name="dlg_confirm_title">Confirmation</string>
-    <string name="dlg_confirm_body">Are you really sure?</string>
+    <string name="dlg_confirm_body">If you clicked this on purpose, press \"Yes\"</string>
     <string name="dlg_confirm_yes">Yes</string>
     <string name="dlg_confirm_no">No</string>
     <string name="delete">Delete</string>

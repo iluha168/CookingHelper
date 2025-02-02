@@ -15,7 +15,7 @@
     <string name="input_weight">Введите вес</string>
     <string name="best_item_combo_remove">Я упаковал зелёные печеньки</string>
     <string name="dlg_confirm_title">Подтверждение</string>
-    <string name="dlg_confirm_body">Точно точно?</string>
+    <string name="dlg_confirm_body">Если вы нажали это специально, нажмите \"Да\"</string>
     <string name="dlg_confirm_yes">Да</string>
     <string name="dlg_confirm_no">Нет</string>
     <string name="delete">Удалить</string>
